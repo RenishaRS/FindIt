@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ item[2] }} | FindIt</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <a href="{{ url_for('home') }}" class="nav-logo">
+            FindIt
+        </a>
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('search') }}">
+                Search
+            </a>
+
+            <a href="{{ url_for('lost') }}">
+                Report Lost
+            </a>
+
+            <a href="{{ url_for('found') }}">
+                Report Found
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="hero">
+
+        <div class="item-card">
+
+            <h1>{{ item[2] }}</h1>
+
+            {% if item[6] %}
+
+                <img
+                    src="{{ url_for('uploaded_file', filename=item[6]) }}"
+                    alt="{{ item[2] }}"
+                >
+
+            {% endif %}
+
+            <p>
+                <strong>Type:</strong> {{ item[1] }}
+            </p>
+
+            <p>
+                <strong>Location:</strong> {{ item[3] }}
+            </p>
+
+            <p>
+                <strong>Date:</strong> {{ item[4] }}
+            </p>
+
+            <p>
+                <strong>Description:</strong> {{ item[5] }}
+            </p>
+
+            <p>
+                <strong>Status:</strong> {{ item[7] }}
+            </p>
+
+
+            {% if item[7] == "Active" %}
+
+                <form
+                    method="POST"
+                    action="{{ url_for('claim_item', item_id=item[0]) }}"
+                >
+
+                    <button type="submit">
+                        Mark as Claimed
+                    </button>
+
+                </form>
+
+            {% else %}
+
+                <p>
+                    This item has been marked as claimed.
+                </p>
+
+            {% endif %}
+
+
+            <br>
+
+            <a href="{{ url_for('search') }}">
+                <button type="button">
+                    Back to Search
+                </button>
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

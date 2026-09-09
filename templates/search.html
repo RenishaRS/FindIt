@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Search Items | FindIt</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <a href="{{ url_for('home') }}" class="nav-logo">
+            FindIt
+        </a>
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('search') }}">
+                Search
+            </a>
+
+            <a href="{{ url_for('lost') }}">
+                Report Lost
+            </a>
+
+            <a href="{{ url_for('found') }}">
+                Report Found
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="hero">
+
+        <h1>Search Lost & Found Items</h1>
+
+        <p>Browse items reported on campus.</p>
+
+
+        <form method="GET" action="{{ url_for('search') }}">
+
+            <input
+                type="text"
+                name="search"
+                placeholder="Search for an item..."
+                value="{{ search }}"
+            >
+
+            <select name="item_type">
+
+                <option value="">All Items</option>
+
+                <option value="Lost" {% if item_type == "Lost" %}selected{% endif %}>
+                    Lost Items
+                </option>
+
+                <option value="Found" {% if item_type == "Found" %}selected{% endif %}>
+                    Found Items
+                </option>
+
+            </select>
+
+            <button type="submit">Search</button>
+
+        </form>
+
+
+        <div class="items">
+
+            {% if items %}
+
+                {% for item in items %}
+
+                    <div class="item-card">
+
+                        <h2>{{ item[2] }}</h2>
+
+                        {% if item[6] %}
+
+                            <img
+                                src="{{ url_for('uploaded_file', filename=item[6]) }}"
+                                alt="{{ item[2] }}"
+                            >
+
+                        {% endif %}
+
+                        <p>
+                            <strong>Type:</strong> {{ item[1] }}
+                        </p>
+
+                        <p>
+                            <strong>Location:</strong> {{ item[3] }}
+                        </p>
+
+                        <p>
+                            <strong>Date:</strong> {{ item[4] }}
+                        </p>
+
+                        <p>
+                            <strong>Status:</strong> {{ item[7] }}
+                        </p>
+
+                        <a href="{{ url_for('item_details', item_id=item[0]) }}">
+                            <button type="button">View Details</button>
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="item-card">
+
+                    <h2>No Items Found</h2>
+
+                    <p>
+                        Try searching with a different item name,
+                        location, or description.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <br>
+
+        <a href="{{ url_for('home') }}">
+            <button type="button">Back to Home</button>
+        </a>
+
+    </main>
+
+</body>
+
+</html>

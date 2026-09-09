@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   General
+========================= */
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f3ef;
+    color: #2d2a26;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   Navigation Bar
+========================= */
+
+.navbar {
+    width: 100%;
+    padding: 18px 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border-bottom: 1px solid #e5ded7;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #2d2a26;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #5f574f;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #2d2a26;
+}
+
+
+/* =========================
+   Main Page Layout
+========================= */
+
+.hero {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 25px;
+}
+
+.hero h1 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.hero h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    font-size: 16px;
+    color: #6b655f;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   Home Logo
+========================= */
+
+.logo {
+    font-size: 52px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+
+/* =========================
+   Buttons
+========================= */
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 13px 23px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    background: #3f3832;
+    color: white;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background: #66594f;
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   Forms
+========================= */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #ddd5ce;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: #2d2a26;
+    transition: 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #8b7d70;
+    box-shadow: 0 0 0 3px rgba(139, 125, 112, 0.12);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+/* =========================
+   Search Results
+========================= */
+
+.items {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* =========================
+   Item Cards
+========================= */
+
+.item-card {
+    width: 100%;
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 18px;
+    text-align: left;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    border: 1px solid #eee7e1;
+}
+
+.item-card h1,
+.item-card h2 {
+    margin-bottom: 18px;
+    color: #2d2a26;
+}
+
+.item-card h1 {
+    font-size: 30px;
+}
+
+.item-card h2 {
+    font-size: 22px;
+}
+
+.item-card p {
+    margin: 10px 0;
+    color: #6b655f;
+    line-height: 1.5;
+}
+
+.item-card strong {
+    color: #2d2a26;
+}
+
+
+/* =========================
+   Item Images
+========================= */
+
+.item-card img {
+    display: block;
+    width: 100%;
+    max-width: 350px;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   Status
+========================= */
+
+.item-card p strong {
+    font-weight: 600;
+}
+
+
+/* =========================
+   Links
+========================= */
+
+.item-card a {
+    text-decoration: none;
+}
+
+
+/* =========================
+   Mobile Responsive
+========================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 16px 20px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 40px 18px;
+    }
+
+    .logo {
+        font-size: 42px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero h2 {
+        font-size: 23px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .buttons button {
+        width: 100%;
+    }
+
+    .item-card {
+        padding: 22px;
+    }
+
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Found Item | FindIt</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <a href="{{ url_for('home') }}" class="nav-logo">
+            FindIt
+        </a>
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('search') }}">
+                Search
+            </a>
+
+            <a href="{{ url_for('lost') }}">
+                Report Lost
+            </a>
+
+            <a href="{{ url_for('found') }}">
+                Report Found
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="hero">
+
+        <h1>Report a Found Item</h1>
+
+        <p>Tell us about the item you found.</p>
+
+
+        <form
+            method="POST"
+            action="{{ url_for('found') }}"
+            enctype="multipart/form-data"
+        >
+
+            <input
+                type="text"
+                name="item_name"
+                placeholder="Item name"
+                required
+            >
+
+            <input
+                type="text"
+                name="location"
+                placeholder="Where did you find it?"
+                required
+            >
+
+            <input
+                type="date"
+                name="date"
+                required
+            >
+
+            <textarea
+                name="description"
+                placeholder="Describe the item"
+            ></textarea>
+
+            <input
+                type="file"
+                name="photo"
+                accept="image/*"
+            >
+
+            <button type="submit">
+                Submit Report
+            </button>
+
+        </form>
+
+    </main>
+
+</body>
+
+</html>

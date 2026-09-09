@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FindIt | Campus Lost & Found</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <a href="{{ url_for('home') }}" class="nav-logo">
+            FindIt
+        </a>
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('search') }}">
+                Search
+            </a>
+
+            <a href="{{ url_for('lost') }}">
+                Report Lost
+            </a>
+
+            <a href="{{ url_for('found') }}">
+                Report Found
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="hero">
+
+        <div class="logo">
+            FindIt
+        </div>
+
+        <h2>Campus Lost & Found</h2>
+
+        <p>
+            Lost something? Found something? Find it here.
+        </p>
+
+        <div class="buttons">
+
+            <a href="{{ url_for('lost') }}">
+                <button>Report Lost Item</button>
+            </a>
+
+            <a href="{{ url_for('found') }}">
+                <button>Report Found Item</button>
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
