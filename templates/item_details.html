@@ -2,21 +2,38 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>{{ item[2] }} | FindIt</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
 </head>
+
 
 <body>
 
+
+    <!-- Navigation -->
+
     <nav class="navbar">
 
-        <a href="{{ url_for('home') }}" class="nav-logo">
+        <a
+            href="{{ url_for('home') }}"
+            class="nav-logo"
+        >
             FindIt
         </a>
+
 
         <div class="nav-links">
 
@@ -37,11 +54,19 @@
     </nav>
 
 
+
+    <!-- Item Details -->
+
     <main class="hero">
+
 
         <div class="item-card">
 
-            <h1>{{ item[2] }}</h1>
+
+            <h1>
+                {{ item[2] }}
+            </h1>
+
 
             {% if item[6] %}
 
@@ -52,32 +77,226 @@
 
             {% endif %}
 
-            <p>
-                <strong>Type:</strong> {{ item[1] }}
-            </p>
 
             <p>
-                <strong>Location:</strong> {{ item[3] }}
+                <strong>Type:</strong>
+                {{ item[1] }}
             </p>
+
 
             <p>
-                <strong>Date:</strong> {{ item[4] }}
+                <strong>Location:</strong>
+                {{ item[3] }}
             </p>
+
 
             <p>
-                <strong>Description:</strong> {{ item[5] }}
+                <strong>Date:</strong>
+                {{ item[4] }}
             </p>
+
 
             <p>
-                <strong>Status:</strong> {{ item[7] }}
+                <strong>Description:</strong>
+                {{ item[5] }}
             </p>
 
+
+            <p>
+                <strong>Status:</strong>
+                {{ item[7] }}
+            </p>
+
+
+
+            <!-- AI MATCHING -->
+
+            {% if item[1] == "Lost" and matches %}
+
+                <div
+                    style="
+                        margin-top: 30px;
+                        padding: 24px;
+                        background: linear-gradient(
+                            135deg,
+                            #f4f1ff,
+                            #eef2ff
+                        );
+                        border: 1px solid #dddff5;
+                        border-radius: 18px;
+                    "
+                >
+
+                    <h2
+                        style="
+                            color: #5558d9;
+                            margin-bottom: 10px;
+                        "
+                    >
+                        🤖 AI Possible Matches
+                    </h2>
+
+
+                    <p
+                        style="
+                            margin-bottom: 20px;
+                        "
+                    >
+                        FindIt found possible matches among
+                        reported found items.
+                    </p>
+
+
+
+                    {% for match in matches %}
+
+                        <div
+                            style="
+                                background: white;
+                                padding: 18px;
+                                margin-bottom: 14px;
+                                border-radius: 14px;
+                                border: 1px solid #e4e5f4;
+                            "
+                        >
+
+                            <h3
+                                style="
+                                    color: #303154;
+                                    margin-bottom: 8px;
+                                "
+                            >
+                                {{ match["item"]["item_name"] }}
+                            </h3>
+
+
+                            <p>
+                                <strong>
+                                    AI Similarity:
+                                </strong>
+
+                                {{ match["score"] }}%
+                            </p>
+
+
+                            <p>
+                                <strong>
+                                    Location:
+                                </strong>
+
+                                {{ match["item"]["location"] }}
+                            </p>
+
+
+                            <p>
+                                <strong>
+                                    Date:
+                                </strong>
+
+                                {{ match["item"]["date"] }}
+                            </p>
+
+
+                            <p>
+                                <strong>
+                                    Description:
+                                </strong>
+
+                                {{ match["item"]["description"] }}
+                            </p>
+
+
+                            {% if match["item"]["photo"] %}
+
+                                <img
+                                    src="{{ url_for(
+                                        'uploaded_file',
+                                        filename=match['item']['photo']
+                                    ) }}"
+                                    alt="Possible matching item"
+                                >
+
+                            {% endif %}
+
+
+                            <a
+                                href="{{ url_for(
+                                    'item_details',
+                                    item_id=match['item']['id']
+                                ) }}"
+                            >
+
+                                <button type="button">
+                                    View Found Item
+                                </button>
+
+                            </a>
+
+                        </div>
+
+                    {% endfor %}
+
+
+                    <p
+                        style="
+                            margin-top: 15px;
+                            font-size: 13px;
+                            color: #77798f;
+                        "
+                    >
+                        AI similarity indicates a possible match
+                        and does not confirm ownership.
+                    </p>
+
+                </div>
+
+
+            {% elif item[1] == "Lost" %}
+
+                <div
+                    style="
+                        margin-top: 30px;
+                        padding: 22px;
+                        background: #f7f7ff;
+                        border-radius: 18px;
+                        border: 1px solid #e4e5f4;
+                    "
+                >
+
+                    <h2
+                        style="
+                            color: #5558d9;
+                            margin-bottom: 10px;
+                        "
+                    >
+                        🤖 AI Matching
+                    </h2>
+
+                    <p>
+                        No possible matches found yet.
+                        Check again when more found items
+                        are reported.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+
+
+            <!-- Claim Button -->
 
             {% if item[7] == "Active" %}
 
                 <form
                     method="POST"
-                    action="{{ url_for('claim_item', item_id=item[0]) }}"
+                    action="{{ url_for(
+                        'claim_item',
+                        item_id=item[0]
+                    ) }}"
+                    style="
+                        margin-top: 25px;
+                    "
                 >
 
                     <button type="submit">
@@ -95,17 +314,24 @@
             {% endif %}
 
 
+
             <br>
 
+
             <a href="{{ url_for('search') }}">
+
                 <button type="button">
                     Back to Search
                 </button>
+
             </a>
+
 
         </div>
 
+
     </main>
+
 
 </body>
 
