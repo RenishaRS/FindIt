@@ -6,38 +6,43 @@
 
 
 /* =========================
-   General
+   Main Theme
 ========================= */
 
 body {
     font-family: Arial, sans-serif;
-    background: #f7f3ef;
-    color: #2d2a26;
+    background: linear-gradient(135deg, #f6f7ff, #eef0ff);
+    color: #20213a;
     min-height: 100vh;
 }
 
 
 /* =========================
-   Navigation Bar
+   Navigation
 ========================= */
 
 .navbar {
     width: 100%;
-    padding: 18px 45px;
+    padding: 18px 55px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #ffffff;
-    border-bottom: 1px solid #e5ded7;
+
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid #e3e5f5;
+
     position: sticky;
     top: 0;
     z-index: 100;
+
+    backdrop-filter: blur(10px);
 }
 
 .nav-logo {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: bold;
-    color: #2d2a26;
+    color: #5558d9;
     text-decoration: none;
     letter-spacing: 1px;
 }
@@ -49,58 +54,73 @@ body {
 }
 
 .nav-links a {
-    color: #5f574f;
+    color: #55566f;
     text-decoration: none;
     font-size: 15px;
+    font-weight: 500;
     transition: 0.2s ease;
 }
 
 .nav-links a:hover {
-    color: #2d2a26;
+    color: #5558d9;
 }
 
 
 /* =========================
-   Main Page Layout
+   Main Layout
 ========================= */
 
 .hero {
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 75px);
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     text-align: center;
-    padding: 50px 25px;
-}
 
-.hero h1 {
-    font-size: 34px;
-    margin-bottom: 12px;
-}
-
-.hero h2 {
-    font-size: 28px;
-    margin-bottom: 12px;
-}
-
-.hero p {
-    font-size: 16px;
-    color: #6b655f;
-    line-height: 1.6;
-    margin-bottom: 25px;
+    padding: 60px 25px;
 }
 
 
 /* =========================
-   Home Logo
+   FindIt Logo
 ========================= */
 
 .logo {
-    font-size: 52px;
+    font-size: 64px;
     font-weight: bold;
+
+    color: #5558d9;
+
     letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================
+   Headings
+========================= */
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+    color: #20213a;
+}
+
+.hero h2 {
+    font-size: 30px;
     margin-bottom: 12px;
+    color: #303154;
+}
+
+.hero p {
+    font-size: 17px;
+    color: #686a82;
+    line-height: 1.7;
+    margin-bottom: 28px;
 }
 
 
@@ -110,25 +130,39 @@ body {
 
 .buttons {
     display: flex;
-    gap: 15px;
+    gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 button {
-    padding: 13px 23px;
+    padding: 14px 24px;
+
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
+
     font-size: 15px;
+    font-weight: 600;
+
     cursor: pointer;
-    background: #3f3832;
+
+    background: linear-gradient(
+        135deg,
+        #5558d9,
+        #7477ef
+    );
+
     color: white;
+
+    box-shadow: 0 8px 20px rgba(85, 88, 217, 0.22);
+
     transition: 0.2s ease;
 }
 
 button:hover {
-    background: #66594f;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+
+    box-shadow: 0 12px 25px rgba(85, 88, 217, 0.3);
 }
 
 
@@ -139,22 +173,42 @@ button:hover {
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+
+    gap: 16px;
+
     width: 100%;
-    max-width: 500px;
+    max-width: 520px;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 12px 35px rgba(50, 55, 120, 0.1);
+
+    border: 1px solid #e5e6f6;
 }
 
 input,
 textarea,
 select {
     width: 100%;
-    padding: 14px 15px;
-    border: 1px solid #ddd5ce;
-    border-radius: 10px;
+
+    padding: 14px 16px;
+
+    border: 1px solid #dddff0;
+
+    border-radius: 11px;
+
     font-size: 15px;
+
     font-family: Arial, sans-serif;
-    background: white;
-    color: #2d2a26;
+
+    background: #fafaff;
+
+    color: #20213a;
+
     transition: 0.2s ease;
 }
 
@@ -162,12 +216,14 @@ input:focus,
 textarea:focus,
 select:focus {
     outline: none;
-    border-color: #8b7d70;
-    box-shadow: 0 0 0 3px rgba(139, 125, 112, 0.12);
+
+    border-color: #6b6ee5;
+
+    box-shadow: 0 0 0 4px rgba(107, 110, 229, 0.12);
 }
 
 textarea {
-    min-height: 120px;
+    min-height: 130px;
     resize: vertical;
 }
 
@@ -178,10 +234,13 @@ textarea {
 
 .items {
     width: 100%;
-    max-width: 800px;
+    max-width: 850px;
+
     margin-top: 35px;
+
     display: flex;
     flex-direction: column;
+
     gap: 20px;
 }
 
@@ -192,18 +251,32 @@ textarea {
 
 .item-card {
     width: 100%;
-    background: #ffffff;
+
+    background: rgba(255, 255, 255, 0.95);
+
     padding: 28px;
-    border-radius: 18px;
+
+    border-radius: 20px;
+
     text-align: left;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-    border: 1px solid #eee7e1;
+
+    box-shadow: 0 10px 30px rgba(50, 55, 120, 0.1);
+
+    border: 1px solid #e4e5f4;
+
+    transition: 0.2s ease;
+}
+
+.item-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 15px 35px rgba(50, 55, 120, 0.14);
 }
 
 .item-card h1,
 .item-card h2 {
     margin-bottom: 18px;
-    color: #2d2a26;
+    color: #303154;
 }
 
 .item-card h1 {
@@ -216,12 +289,14 @@ textarea {
 
 .item-card p {
     margin: 10px 0;
-    color: #6b655f;
-    line-height: 1.5;
+
+    color: #686a82;
+
+    line-height: 1.6;
 }
 
 .item-card strong {
-    color: #2d2a26;
+    color: #303154;
 }
 
 
@@ -231,21 +306,16 @@ textarea {
 
 .item-card img {
     display: block;
+
     width: 100%;
     max-width: 350px;
     max-height: 300px;
+
     object-fit: cover;
-    border-radius: 14px;
+
+    border-radius: 15px;
+
     margin-bottom: 20px;
-}
-
-
-/* =========================
-   Status
-========================= */
-
-.item-card p strong {
-    font-weight: 600;
 }
 
 
@@ -266,13 +336,17 @@ textarea {
 
     .navbar {
         padding: 16px 20px;
+
         flex-direction: column;
-        gap: 12px;
+
+        gap: 14px;
     }
 
     .nav-links {
-        gap: 15px;
+        gap: 16px;
+
         flex-wrap: wrap;
+
         justify-content: center;
     }
 
@@ -281,33 +355,41 @@ textarea {
     }
 
     .hero {
-        padding: 40px 18px;
+        padding: 45px 18px;
     }
 
     .logo {
-        font-size: 42px;
+        font-size: 46px;
     }
 
     .hero h1 {
-        font-size: 28px;
+        font-size: 29px;
     }
 
     .hero h2 {
-        font-size: 23px;
+        font-size: 24px;
+    }
+
+    .hero p {
+        font-size: 15px;
     }
 
     .buttons {
         flex-direction: column;
+
         width: 100%;
-        max-width: 300px;
+        max-width: 310px;
     }
 
     .buttons button {
         width: 100%;
     }
 
-    .item-card {
+    form {
         padding: 22px;
     }
 
+    .item-card {
+        padding: 22px;
+    }
 }
