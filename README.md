@@ -2,6 +2,8 @@
 
 FindIt is a web-based campus Lost & Found application that helps students report, search, and manage lost and found items within their campus.
 
+🌐 **Live Demo:** [Open FindIt](https://findit-wp5y.onrender.com)
+
 ## Features
 
 - Report lost items
